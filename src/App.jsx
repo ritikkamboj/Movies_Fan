@@ -7,15 +7,15 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <main>
-      <div>
-        <Navbar />
-      </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Favourite" element={<Favourite />} />
-      </Routes>
-    </main>
+    <div>
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Favourite" element={<Favourite />} />
+        </Routes>
+      </main>
+    </div>
   );
 }
 
