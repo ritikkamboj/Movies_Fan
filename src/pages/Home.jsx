@@ -77,9 +77,12 @@ function Home() {
         </button>
       </form>
       <div className="">
-        {movies.map((movie) => (
-          <MovieCard movie={movie} />
-        ))}
+        {movies.map(
+          (movie) =>
+            movie.name.toLowerCase().startsWith(serachMovie) && (
+              <MovieCard movie={movie} />
+            )
+        )}
       </div>
     </div>
   );
