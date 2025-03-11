@@ -15,7 +15,9 @@ export async function getPopularMovies() {
 
 
 export async function getSearchMovies(query) {
-    const res = await fetch(`${BASE_URL}/search/movies?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
+    console.log(query);
+    const res = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
     const data = await res.json();
+    // console.log(data)
     return data.results;
 }

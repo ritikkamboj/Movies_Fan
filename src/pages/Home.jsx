@@ -77,9 +77,24 @@ function Home() {
     }
   }, []);
 
-  const handleSearchSubmission = (e) => {
+  const handleSearchSubmission = async (e) => {
     e.preventDefault();
-    alert(serachMovie);
+    if (!serachMovie.trim()) return;
+    if (isLoading) return;
+
+    setIsLoading(true);
+
+    try {
+      const data = await getSearchMovies(serachMovie);
+      console.log(data);
+      setMovies(data);
+    } catch (error) {
+      console.log("Failed to Fetched the search movies datas");
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
+    // alert(serachMovie);
     setSearchMovie("");
   };
 
