@@ -97,14 +97,20 @@ function Home() {
           Search
         </button>
       </form>
-      <div className="">
-        {movies.map(
-          (movie) =>
-            movie.title.toLowerCase().startsWith(serachMovie) && (
-              <MovieCard movie={movie} key={movie.id} />
-            )
-        )}
-      </div>
+      {error && <div className=""> {error} </div>}
+
+      {isLoading ? (
+        <div className=""> Loading... </div>
+      ) : (
+        <div className="">
+          {movies.map(
+            (movie) =>
+              movie.title.toLowerCase().startsWith(serachMovie) && (
+                <MovieCard movie={movie} key={movie.id} />
+              )
+          )}
+        </div>
+      )}
     </div>
   );
 }
