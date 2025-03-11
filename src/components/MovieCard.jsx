@@ -1,9 +1,16 @@
 import React from "react";
 import { BASE_IMAGE_URL } from "../services/api";
+import { useMoviesContext } from "../MoviesContext/MovieContext";
 
 function MovieCard({ movie }) {
+  const { addTofavourite, deleteFromFav, isFavourite } = useMoviesContext();
+  const fav = isFavourite(movie.id);
   function handleButtonClick() {
-    alert("heart button clciked ");
+    if (fav) {
+      deleteFromFav(movie.id);
+    } else {
+      addTofavourite(movie);
+    }
   }
 
   return (
@@ -12,7 +19,7 @@ function MovieCard({ movie }) {
         <img src={`${BASE_IMAGE_URL}/${movie.poster_path}`} alt={movie.title} />
         <div className="movie-overlay">
           <button onClick={handleButtonClick} className="favourite-btn">
-            🤍
+            {fav ? "❤️" : "🤍"}
           </button>
         </div>
       </div>
